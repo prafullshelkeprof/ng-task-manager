@@ -1,0 +1,24 @@
+<div *ngIf="tasks && tasks.length">
+    <mat-card class="task-card" *ngFor="let task of tasks">
+        <mat-card-header>
+            <mat-card-title> {{ task.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p> {{ task.description }} </p>
+            <p> {{ task.category }} </p>
+            <div> {{ task.dueDateTime }} </div>
+            <div> {{ task.reminderDateTime }} </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-fab aria-label="icon button with a done icon">
+                <mat-icon>done</mat-icon>
+            </button>
+            <button mat-fab color="primary" aria-label="icon button with a edit icon">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-fab color="warn" aria-label="icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

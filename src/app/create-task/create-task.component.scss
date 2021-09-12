@@ -1,0 +1,12 @@
+.create-task-form {
+    background-color: #000000;
+    .w60 {
+        width: 60%;
+    }
+    &__button-container {
+        text-align: center;
+    }
+    input, textarea, mat-label {
+        color: #ffffff;
+    }
+}
