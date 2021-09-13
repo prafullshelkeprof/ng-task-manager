@@ -1,11 +1,11 @@
 <div *ngIf="filteredTasks && filteredTasks.length" class="display-tasks">
-    <div *ngFor="let data of displayData">
-        <p class="category-title">
+    <div *ngFor="let data of displayData" class="display-tasks__category-container">
+        <p class="display-tasks__category-title">
             <span> {{ data[0]}}</span>
         </p>
-        <mat-grid-list cols="2" rowHeight="200px">
+        <mat-grid-list cols="1" rowHeight="200px">
             <mat-grid-tile *ngFor="let task of data[1]">
-                <mat-card class="task-card">
+                <mat-card class="display-tasks__task-card">
                     <mat-card-header>
                         <mat-card-title>
                             <span>Title : </span>
