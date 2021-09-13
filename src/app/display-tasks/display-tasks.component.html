@@ -1,36 +1,40 @@
 <div *ngIf="filteredTasks && filteredTasks.length" class="display-tasks">
-    <mat-grid-list cols="2" rowHeight="200px">
-        <mat-grid-tile *ngFor="let task of filteredTasks">
-            <mat-card class="task-card">
-                <mat-card-header>
-                    <mat-card-title>
-                        <span>Title : </span>
-                        <span> {{ task.title }} </span>
-                    </mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <p>
-                        <span>Description : </span>
-                        <span>
-                            {{ task.description }}
-                        </span>
-                    </p>
-                    <p>
-                        <span>Category : </span>
-                        <span>
-                            {{ task.category }}
-                        </span>
-                    </p>
-                    <div>
-                        <span> Reminder Date : </span>
-                        <span>{{ task.reminderDateTime }}</span>
-                    </div>
-                    <div>
-                        <span>Due Date : </span>
-                        <span>{{ task.dueDateTime }} </span>
-                    </div>
-                </mat-card-content>
-                <!-- <mat-card-actions>
+    <div *ngFor="let data of displayData">
+        <p class="category-title">
+            <span> {{ data[0]}}</span>
+        </p>
+        <mat-grid-list cols="2" rowHeight="200px">
+            <mat-grid-tile *ngFor="let task of data[1]">
+                <mat-card class="task-card">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <span>Title : </span>
+                            <span> {{ task.title }} </span>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span>Description : </span>
+                            <span>
+                                {{ task.description }}
+                            </span>
+                        </p>
+                        <p>
+                            <span>Category : </span>
+                            <span>
+                                {{ task.category }}
+                            </span>
+                        </p>
+                        <div>
+                            <span> Reminder Date : </span>
+                            <span>{{ task.reminderDateTime }}</span>
+                        </div>
+                        <div>
+                            <span>Due Date : </span>
+                            <span>{{ task.dueDateTime }} </span>
+                        </div>
+                    </mat-card-content>
+                    <!-- <mat-card-actions>
                     <button mat-fab aria-label="icon button with a done icon">
                         <mat-icon>done</mat-icon>
                     </button>
@@ -41,7 +45,8 @@
                         <mat-icon>delete</mat-icon>
                     </button>
                 </mat-card-actions> -->
-            </mat-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
 </div>

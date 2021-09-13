@@ -24,6 +24,7 @@ export class DisplayTasksComponent {
     newlyAddedTasks: Task[] = this.getTasksService.getNewlyAddedTasks();
     savedTasks: Task[] = [];
     filteredTasks: Task[] = [];
+    displayData: [string, Task[]][];
     reminderDate: string = '';
     dueDate: string = '';
     todaysDate: number;
@@ -71,6 +72,12 @@ export class DisplayTasksComponent {
             }
             return prev;
         }, this.filteredTasks);
-        this.filteredTasks.sort((a, b) => a.dueDateTimeStamp - b.dueDateTimeStamp)
+        this.filteredTasks.sort((a, b) => a.dueDateTimeStamp - b.dueDateTimeStamp);
+        this.displayData = this.categories.map(currentCategory => {
+            let data:Task[] = this.filteredTasks.filter((currentTask: Task) => {
+                return currentTask.category === currentCategory.value;
+            })
+            return [currentCategory.value, data];
+        })
     }
 }
