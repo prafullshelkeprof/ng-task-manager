@@ -9,8 +9,10 @@ export interface Task {
     title: string;
     description: string;
     category: string;
-    reminderDateTime: number;
-    dueDateTime: number;
+    reminderDateTime: string;
+    dueDateTime: string;
+    dueDateTimeStamp: number,
+    reminderDateTimeStamp: number
 }
 
 @Injectable({
@@ -20,14 +22,24 @@ export interface Task {
 export class GetTasksService {
     constructor(private http: HttpClient) { }
     configUrl = 'assets/tasks-list.json';
+    newlyAddedTasks: Task[] = [];
+    savedTasks: Task[] = [];
 
-    getTasksList() {
-        return this.http.get<Task>(this.configUrl)
+    getSavedTasks() {
+        return this.http.get<Task[]>(this.configUrl)
             .pipe(
                 retry(3), // retry a failed request up to 3 times
-                catchError(this.handleError) // then handle the error
-            );
+                catchError(this.handleError), // then handle the error
+               
+            )
     }
+    getNewlyAddedTasks() {
+        return this.newlyAddedTasks;
+    }
+    addToTasks(task: Task) {
+        this.newlyAddedTasks.push(task);
+    }
+    
     private handleError(error: HttpErrorResponse) {
         if (error.status === 0) {
             // A client-side or network error occurred. Handle it accordingly.

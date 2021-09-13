@@ -1,11 +1,12 @@
 <div class="main-container">
     <mat-toolbar>
-        <sidebar-pane></sidebar-pane>
-        <button mat-icon-button aria-label="icon button with a home icon">
+        <a mat-icon-button aria-label="icon button with a home icon" routerLink="/display-tasks">
             <mat-icon>home</mat-icon>
-        </button>
+        </a>
         <span>Task Manager</span>
+        <a mat-icon-button aria-label="icon button with link to new task" matTooltip="Create New Task" routerLink="/create-task">
+            <mat-icon>create</mat-icon>
+        </a>
     </mat-toolbar>
-    <!-- <display-tasks></display-tasks> -->
-    <create-task></create-task>
+    <router-outlet></router-outlet>
 </div>
