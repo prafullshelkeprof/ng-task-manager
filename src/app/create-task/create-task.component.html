@@ -1,0 +1,53 @@
+<form class="create-task-form">
+    <mat-grid-list cols="1" rowHeight="100px">
+        <mat-grid-tile>
+            <mat-form-field class="w60" appearance="fill">
+                <mat-label>Title</mat-label>
+                <input [(ngModel)]="currentTask.title" name="title" matInput required>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="w60" appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput [(ngModel)]="currentTask.description" name="description"></textarea>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="w60" appearance="fill">
+                <mat-label>Reminder Date</mat-label>
+                <input matInput [matDatepicker]="reminderDate" [(ngModel)]="currentTask.reminderDateTime" name="reminderDateTime" required>
+                <mat-datepicker-toggle matSuffix [for]="reminderDate"></mat-datepicker-toggle>
+                <mat-datepicker #reminderDate></mat-datepicker>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="w60" appearance="fill">
+                <mat-label>Due Date</mat-label>
+                <input matInput [matDatepicker]="dueDate" [(ngModel)]="currentTask.dueDateTime" name="dueDateTime" required>
+                <mat-datepicker-toggle matSuffix [for]="dueDate"></mat-datepicker-toggle>
+                <mat-datepicker #dueDate></mat-datepicker>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="w60" appearance="fill">
+                <mat-label>Category</mat-label>
+                <mat-select [(value)]="selectedCategory" required>
+                    <mat-option *ngFor="let category of categories" [value]="category.value">
+                        {{ category.displayName }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <div class="w60 create-task-form__button-container">
+                <button mat-raised-button color="accent" type="reset" class="reset-button">Reset</button>
+                <button mat-raised-button color="primary" (click)="saveTask($event)">Save Task</button>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

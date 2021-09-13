@@ -1,0 +1,30 @@
+.display-tasks {
+    background-color: #000000;
+    display: flex;
+    flex-wrap: wrap;
+    &__task-card {
+        width: 80%;
+    }
+    &__category-title {
+        color: #ffffff;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+        margin: 10px 0;
+        text-transform: capitalize;
+    }
+    &__category-container {
+        flex-basis: 100%;
+    }
+}
+
+@media (min-width: 481px) {
+    .display-tasks__category-container {
+        flex-basis: 50%;
+    }
+}
+@media (min-width: 768px) {
+    .display-tasks__category-container {
+        flex-basis: 25%;
+    }
+}
